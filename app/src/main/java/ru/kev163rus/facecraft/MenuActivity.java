@@ -86,15 +86,17 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
 
     private void createNewUserFace(Bitmap givenCurrentUserPhoto){
 
+        bitmapResult = BitmapFactory.decodeResource(getResources(), R.drawable.stivewithemptyhead).copy(Bitmap.Config.ARGB_8888, true);
+
         int widthGivenBitmap = givenCurrentUserPhoto.getWidth();
         int heightGivenBitmap = givenCurrentUserPhoto.getHeight();
         int countWidth, countHeight, stepWidth, stepHeight, pixelColor, scalledWidth, scalledHeight;
 
-        stepWidth = 4;
-        stepHeight = 4;
+        stepWidth = 8;
+        stepHeight = 8;
 
-        scalledWidth = 90;
-        scalledHeight = 90;
+        scalledWidth = (int)(bitmapResult.getWidth() / 0.9);
+        scalledHeight = scalledWidth;
         bitmapNewUserFace = Bitmap.createScaledBitmap(givenCurrentUserPhoto, scalledWidth, scalledHeight, false);
 
         pixelColor = bitmapNewUserFace.getPixel(1,1);
@@ -109,11 +111,11 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
         }
 
 
-        //bitmapResult = BitmapFactory.decodeResource(getResources(), R.drawable.stivewithemptyhead).copy(Bitmap.Config.ARGB_8888, true);
 
         Canvas c = new Canvas(bitmapResult);
         c.drawBitmap(bitmapResult, 0, 0, new Paint());
-        c.drawBitmap(bitmapNewUserFace, 45, 0, new Paint());
+        int leftPosotoinSecondImage = (bitmapNewUserFace.getWidth() / 2) - (bitmapResult.getWidth() / 2);
+        c.drawBitmap(bitmapNewUserFace, leftPosotoinSecondImage, 0, new Paint());
 
         imageViewUserPhoto.setImageBitmap(bitmapResult);
 
