@@ -26,6 +26,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
     private SurfaceView surfaceViewUserPhoto;
     String mCurrentPhotoPath;
     private Paint mPaint = new Paint();
+    Bitmap bitmapCurrentUserPhoto, bitmapNewUserFace, bitmapResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,9 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
 
         imageViewUserPhoto = (ImageView) findViewById(R.id.imageViewUserPhoto);
 //        surfaceViewUserPhoto = (SurfaceView) findViewById(R.id.surfaceViewUserPhoto);
+
+        bitmapResult = BitmapFactory.decodeResource(getResources(), R.drawable.stivewithemptyhead).copy(Bitmap.Config.ARGB_8888, true);
+        imageViewUserPhoto.setImageBitmap(bitmapResult);
 
 //        mCurrentPhotoPath = "/storage/sdcard1/PICTURES/JPEG_20160104_172232.jpg";
 //        File imageFile = new File(mCurrentPhotoPath);
@@ -72,7 +77,7 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
 //            imageViewUserPhoto.setImageDrawable(Drawable.createFromPath(mCurrentPhotoPath));
             File imageFile = new File(mCurrentPhotoPath);
             if (imageFile.exists()) {
-                Bitmap bitmapCurrentUserPhoto = BitmapFactory.decodeFile(mCurrentPhotoPath);
+                bitmapCurrentUserPhoto = BitmapFactory.decodeFile(mCurrentPhotoPath);
                 createNewUserFace(bitmapCurrentUserPhoto);
                 bitmapCurrentUserPhoto.recycle();
             }
@@ -85,14 +90,12 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
         int heightGivenBitmap = givenCurrentUserPhoto.getHeight();
         int countWidth, countHeight, stepWidth, stepHeight, pixelColor, scalledWidth, scalledHeight;
 
-        scalledWidth = 200;
-        scalledHeight = 200;
+        stepWidth = 4;
+        stepHeight = 4;
 
-        Bitmap bitmapNewUserFace = Bitmap.createScaledBitmap(givenCurrentUserPhoto, scalledWidth, scalledHeight, false);
-//        givenCurrentUserPhoto.prepareToDraw();
-
-        stepWidth = 10;
-        stepHeight = 10;
+        scalledWidth = 90;
+        scalledHeight = 90;
+        bitmapNewUserFace = Bitmap.createScaledBitmap(givenCurrentUserPhoto, scalledWidth, scalledHeight, false);
 
         pixelColor = bitmapNewUserFace.getPixel(1,1);
         for (countWidth = 1; countWidth < scalledWidth; countWidth++){
@@ -105,13 +108,40 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
 
         }
 
-        imageViewUserPhoto.setImageBitmap(bitmapNewUserFace);
+
+        //bitmapResult = BitmapFactory.decodeResource(getResources(), R.drawable.stivewithemptyhead).copy(Bitmap.Config.ARGB_8888, true);
+
+        Canvas c = new Canvas(bitmapResult);
+        c.drawBitmap(bitmapResult, 0, 0, new Paint());
+        c.drawBitmap(bitmapNewUserFace, 45, 0, new Paint());
+
+        imageViewUserPhoto.setImageBitmap(bitmapResult);
 
         givenCurrentUserPhoto.recycle();
-//        if (bitmapNewUserFace != null) bitmapNewUserFace.recycle();
     }
-    
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (bitmapNewUserFace != null) {
+            bitmapNewUserFace.recycle();
+            bitmapNewUserFace = null;
+        }
+        if (bitmapCurrentUserPhoto != null) {
+            bitmapCurrentUserPhoto.recycle();
+            bitmapCurrentUserPhoto = null;
+        }
+        if (bitmapResult != null) {
+            bitmapResult.recycle();
+            bitmapResult = null;
+        }
+//        Toast.makeText(getApplicationContext(), "onStop()", Toast.LENGTH_SHORT).show();
+    }
+
+
     private void dispatchTakePictureIntent() {
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
