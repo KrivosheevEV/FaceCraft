@@ -53,7 +53,7 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
         imageViewUserPhoto = (ImageView) findViewById(R.id.imageViewUserPhoto);
 
         NumberPicker numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
-        numberPicker.setMaxValue(15);
+        numberPicker.setMaxValue(20);
         numberPicker.setMinValue(0);
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
@@ -95,7 +95,7 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
         int countWidth, countHeight, stepWidth, stepHeight, pixelColor, scalledWidth, scalledHeight;
 
         int widthOfHead = (bitmapResult.getWidth() / 2);
-        int widthOfPixel = (widthOfHead / 16) + givenUserDelta;
+        int widthOfPixel = (widthOfHead / 16) + (givenUserDelta * 2);
 
         stepWidth = widthOfPixel;
         stepHeight = widthOfPixel;
@@ -157,10 +157,10 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
             if (DoIt) {
                 Toast.makeText(
                         getApplicationContext(),
-                        "Image saved in: " + NewFullPath, Toast.LENGTH_SHORT).show();
+                        getString(R.string.toastImageSaveIn) + NewFullPath, Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(getApplicationContext(),
-                        "Whoops! Image not saved.", Toast.LENGTH_SHORT)
+                        "Whoops! Image not saved.", Toast.LENGTH_LONG)
                         .show();
             }
             picOut.flush();
@@ -219,8 +219,14 @@ public class MenuActivity extends Activity implements View.OnClickListener  {
         File storageDir = Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES);
         // For ChinePhones.
-        if (!storageDir.exists() || storageDir.canWrite()){
-            String newPath = storageDir.getAbsolutePath().replace("sdcard0","sdcard1");
+        if (!storageDir.exists() || !storageDir.canWrite()){
+            String newPath;
+            if (storageDir.getAbsolutePath().contains("sdcard0")){
+                newPath = storageDir.getAbsolutePath().replace("sdcard0","sdcard1");
+            }else{
+                newPath = storageDir.getAbsolutePath().replace("sdcard1","sdcard0");
+            }
+
             storageDir = new File(newPath);
         }
 
