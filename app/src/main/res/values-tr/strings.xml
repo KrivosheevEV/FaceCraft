@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Ayarlar</string>
+    <string name="buttonCreatePhoto">Fotoğraf</string>
+    <string name="descriptionUserPhoto">Bu - sen Minecraft!</string>
+    <string name="toastImageSaveIn">Görüntü kaydedilir burada:</string>
+</resources>

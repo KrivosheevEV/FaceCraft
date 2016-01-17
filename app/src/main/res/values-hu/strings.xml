@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Beállítások</string>
+    <string name="buttonCreatePhoto">Fénykép</string>
+    <string name="descriptionUserPhoto">Ez a Minecraft!</string>
+    <string name="toastImageSaveIn">A kép tárolt itt:</string>
+</resources>

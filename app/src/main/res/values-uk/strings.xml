@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Налаштування</string>
+    <string name="buttonCreatePhoto">Зробити фото</string>
+    <string name="descriptionUserPhoto">Це - ти в Майнкрафте!</string>
+    <string name="toastImageSaveIn">Зображення збережено тут: </string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">FaceCraft</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu" translatable="false">FaceCraft</string>
+    <string name="buttonCreatePhoto">Take Photo</string>
+    <string name="descriptionUserPhoto">Is it - you in MineCraft!</string>
+    <string name="toastImageSaveIn">Image saved in: </string>
+</resources>

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">FaceCraft</string>
     <string name="action_settings">Настройки</string>
-    <string name="title_activity_menu">FaceCraft</string>
     <string name="buttonCreatePhoto">Сделать фото</string>
     <string name="descriptionUserPhoto">Это - ты в Майнкрафте!</string>
     <string name="toastImageSaveIn">Изображение сохранено тут: </string>

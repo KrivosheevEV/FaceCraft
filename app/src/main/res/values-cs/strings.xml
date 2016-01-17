@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Nastavení</string>
+    <string name="buttonCreatePhoto">Udělat fotku</string>
+    <string name="descriptionUserPhoto">To jsi v Minecraft!</string>
+    <string name="toastImageSaveIn">Obrázek je uložen zde:</string>
+</resources>

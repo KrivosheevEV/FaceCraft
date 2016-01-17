@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Configuração</string>
+    <string name="buttonCreatePhoto">Tirar uma foto</string>
+    <string name="descriptionUserPhoto">É você na Maincraft!</string>
+    <string name="toastImageSaveIn">A imagem guardada aqui:</string>
+</resources>

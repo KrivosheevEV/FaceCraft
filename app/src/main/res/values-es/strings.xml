@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">La configuración de</string>
+    <string name="buttonCreatePhoto">Hacer una foto de la</string>
+    <string name="descriptionUserPhoto">Es - te en Minecraft!</string>
+    <string name="toastImageSaveIn">Guarda la imagen aquí:</string>
+</resources>

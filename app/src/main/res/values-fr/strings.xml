@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Les paramètres</string>
+    <string name="buttonCreatePhoto">Pour faire de la photo</string>
+    <string name="descriptionUserPhoto">C\'est - tu dans Minacraft!</string>
+    <string name="toastImageSaveIn">L\'image a été enregistrée par ici:</string>
+</resources>
